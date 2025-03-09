@@ -1,28 +1,34 @@
-class A{
-    public void show(){
-        System.out.println("in a show");
-    }
+abstract class A{
+    public abstract void show();
+    public abstract void config();
 }
 
-class B extends A{
-    public void show(){
-        System.out.println("in b show");
+// class B extends A {
 
-    }
-}
+//     @Override
+//     public void show() {
+//         System.out.println("in B show");
+//     }
+
+// }
 
 public class Demo{
     public static void main(String[] args) {
         A obj = new A(){
-            public void show()
-            {
-                System.out.println("in anonymous show");
+
+            @Override
+            public void show() {
+                System.out.println("in anonymous abstract show");
             }
+
+            @Override
+            public void config() {
+                System.out.println("in anonymous abstract config");
+            }
+            
         };
-        A obj1 = new A();
-        
         obj.show();
-        obj1.show();
+        obj.config();
 
     }
 }
