@@ -19,8 +19,10 @@ public class Demo{
                 System.out.println("in anonymous show");
             }
         };
-
+        A obj1 = new A();
+        
         obj.show();
+        obj1.show();
 
     }
 }
