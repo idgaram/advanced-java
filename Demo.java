@@ -1,42 +1,19 @@
-
-
-enum Laptop{
-    Macbook(2000), Microsoft, Yoga(1200);
-    
-    private Laptop(){
-        
+class A{
+    public void showLongName(){
+        System.out.println("in a show");
     }
+}
 
-    private Laptop(int price) {
-        this.price = price;
+class B extends A{
+    public void showLongName(){
+        System.out.println("in b show");
     }
-
-    private int price;
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-    
-    
 }
 public class Demo{
 
     public static void main(String[] args) {
-
-        Laptop[] all = Laptop.values();
-        // Laptop lap = Laptop.Macbook;
-        // System.out.println(lap.getPrice());
-        // lap.setPrice(1);
-        // System.out.println(lap.getPrice());
-        
-
-        for (Laptop elem : all) {
-            System.out.println(elem.getPrice());
-        }
+    B obj = new B();   
+    obj.showLongName();
         
     }
    
