@@ -1,37 +1,43 @@
-import java.util.Random;
 
-enum Status{
-    Running, Failed, Pending, Success
+
+enum Laptop{
+    Macbook(2000), Microsoft, Yoga(1200);
+    
+    private Laptop(){
+        
+    }
+
+    private Laptop(int price) {
+        this.price = price;
+    }
+
+    private int price;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    
+    
 }
 public class Demo{
 
     public static void main(String[] args) {
 
-        Random seed = new Random();
+        Laptop[] all = Laptop.values();
+        // Laptop lap = Laptop.Macbook;
+        // System.out.println(lap.getPrice());
+        // lap.setPrice(1);
+        // System.out.println(lap.getPrice());
         
-        int randomInt = seed.nextInt(Status.values().length);
 
-        System.out.println(randomInt);
-
-
-        switch (Status.values()[randomInt]) {
-            case Running:
-                System.out.println("all good");
-                break;
-            default:
-                System.out.println("not running");
-                break;
+        for (Laptop elem : all) {
+            System.out.println(elem.getPrice());
         }
         
-
-            // Status s = Status.values()[randomInt];
-
-            // if(s == Status.Pending){
-            //     System.out.println("all good");
-            // }
-            // else if(s != Status.Pending){
-            //     System.out.println("no good");
-            // }
     }
    
     
