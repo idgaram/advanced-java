@@ -1,31 +1,21 @@
-interface  Computer{
-    void code();
-}
-
-class Laptop implements Computer{
-    public void code(){
-        System.out.println("code, compile, run");
-    }
-}
-class Desktop implements Computer{
-    public void code(){
-        System.out.println("code, compile, run fast");
-    }
-}
-
-
-class Developper{
-    public void devApps(Computer lap){
-        lap.code();
-    }
+enum Status{
+    Running, Failed, Pending, Success
 }
 public class Demo{
+
     public static void main(String[] args) {
-        Computer lap = new Laptop();
-        Computer desk = new Desktop();
+    int i =5;
+    Status s = Status.Failed; 
+    System.out.println(s.ordinal());
+    System.out.println(s.getClass());
 
-
-        Developper Lorys = new Developper();
-        Lorys.devApps(lap);
+    Status[] all = Status.values();
+    for (Status single : all) {
+        System.out.println(single + " : " + single.ordinal());
     }
+
+    }
+   
+    
+    
 }
