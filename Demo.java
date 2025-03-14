@@ -1,20 +1,21 @@
-class A{
-    public void showLongName(){
-        System.out.println("in a show");
-    }
+@FunctionalInterface
+interface A{
+    void show(int i);
 }
 
-class B extends A{
-    public void showLongName(){
-        System.out.println("in b show");
-    }
-}
-public class Demo{
+// class B implements A{
+//     public void show(){
+//         System.out.println("in B show");
+//     }
+// }
+
+public class Demo{ 
 
     public static void main(String[] args) {
-    B obj = new B();   
-    obj.showLongName();
-        
+
+        A obj = i -> System.out.println("in A show " + i);
+        obj.show(15);
+
     }
    
     
