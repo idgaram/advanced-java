@@ -1,19 +1,20 @@
-@FunctionalInterface
-interface A{
-    int add(int i, int j);
-}
 
 public class Demo{ 
 
     public static void main(String[] args) {
 
-        A obj = (i, j) -> i+j;
-            
+        int i = 1;
+
+
         
-        System.out.println(obj.add(2, 3));
+
+        try {
+            int j = 10/i;
+            System.out.println(j);
+        } catch (Exception e) {
+            System.out.println("error happened : " + e);
+        }
 
     }
-   
-    
-    
+
 }
