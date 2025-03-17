@@ -1,17 +1,43 @@
-class CustomException extends Exception{
-    public CustomException(String string){
-        super(string);
+// class CustomException extends Exception{
+//     public CustomException(String string){
+//         super(string);
+//     }
+// }
+
+class A{
+    public void show() throws ClassNotFoundException
+    {
+        // try {
+            System.out.println(Class.forName("B"));
+        // } catch (ClassNotFoundException e) {
+        //     System.err.println("class was not found");
+        // }
+        // System.out.println(Class.forName("B"));
+
     }
 }
-
 public class Demo{ 
 
-    public static void main(String[] args) {
-        try{
-        Class.forName("CustomException");
-        } catch(ClassNotFoundException e) {
-            System.out.println("no class.forName()");
-        }
+    static{
+        System.out.println("class loaded");
+    }
+    public static void main (String[] args){
+
+        
+
+        A obj = new A();
+        try {
+            obj.show();
+        } catch (ClassNotFoundException e) {
+            System.err.println("class was not found " + e);
+        } 
+        System.out.println("hello");
+        
+        // try{
+        // Class.forName("CustomException");
+        // } catch(ClassNotFoundException e) {
+        //     System.out.println("no class.forName()");
+        // }
         // int i = 20 ;
         // int j;
         
