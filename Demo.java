@@ -1,7 +1,6 @@
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 // import java.io.IOException;
 
@@ -16,11 +15,16 @@ public class Demo{
     //     }
     //     System.out.println((int) nombre);
 
-    InputStreamReader in = new InputStreamReader(System.in);
-        try (BufferedReader bf = new BufferedReader(in)) {
-            int num = Integer.parseInt(bf.readLine());
-            System.out.println(num);
-        }
+    // InputStreamReader in = new InputStreamReader(System.in);
+    //     try (BufferedReader bf = new BufferedReader(in)) {
+    //         int num = Integer.parseInt(bf.readLine());
+    //         System.out.println(num);
+    //     }
+
+    try (Scanner sc = new Scanner(System.in)) {
+        int num = sc.nextInt();
+        System.out.println(num);
+    }
     }
 
 }
