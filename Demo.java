@@ -1,64 +1,50 @@
-class A implements Runnable{
-    String msg = "hello";
+class Counter{
 
-    public A(){
-
-    }
-
-    public A(String msg){
-        this.msg = msg;
-    }
-
-    public void show(){
-        for (int i = 0; i < 100; i++) {
-            System.out.println(msg);
-            try {
-                Thread.sleep(5);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-    }
-    public void run(){
-        show();
+    int count;
+    public synchronized  void increment(){
+        count++;
     }
 }
-// class B implements Runnable{
-//     public void show(){
-//         for (int i = 0; i < 100; i++) {
-//             System.out.println("hello" );
-//             try {
-//                 Thread.sleep(5);
-//             } catch (InterruptedException e) {
-//                 // TODO Auto-generated catch block
-//                 e.printStackTrace();
-//             }
-//         }
-//     }
-//     public void run(){
-//         show();
-//     }
-// }
-
 public class Demo{ 
 
-    public static void main (String[] args){
+    public static void main (String[] args) throws InterruptedException{
    
-        A obj = new A("hello 1");
-        A obj2 = new A("hello 2");
+        Counter ct1 = new Counter();
+        // Counter ct2 = new Counter();
 
-        Thread tr1 = new Thread(obj);
-        Thread tr2 = new Thread(obj2);
+      Runnable obj1 = () -> {
+        for (int i = 0; i < 100000; i++) {
+            try {
+                ct1.increment();
+                // System.out.println("count for counter 1 is : " + ct1.count);
+                // Thread.sleep(1);
+            } 
+            // catch (InterruptedException e) {}
+            finally{}
+        }
+      };
+      Runnable obj2 = () -> {
+        for (int i = 0; i < 100000; i++) {
+            try {
+                ct1.increment();
+                // System.out.println("count for counter 2 is : " + ct1.count);
+                // Thread.sleep(1);
+            }// catch (InterruptedException e) {}
+            finally{}
+        }
+      };
+
+      Thread tr1 = new Thread(obj1);
+      Thread tr2 = new Thread(obj2);
+
 
         tr1.start();
-        try {
-            Thread.sleep(2);
-        } catch (InterruptedException e) {
-            // e.printStackTrace();
-        }
         tr2.start();
 
+        tr1.join();
+        tr2.join();
+
+        System.out.println(ct1.count);
     }
 
 }
