@@ -1,30 +1,35 @@
-
-import java.io.IOException;
-import java.util.Scanner;
-
-// import java.io.IOException;
+class A extends Thread{
+    public void show(){
+        for (int i = 0; i < 1000; i++) {
+            System.out.println("hi" );
+        }
+    }
+    public void run(){
+        show();
+    }
+}
+class B extends Thread{
+    public void show(){
+        for (int i = 0; i < 1000; i++) {
+            System.out.println("hello" );
+        }
+    }
+    public void run(){
+        show();
+    }
+}
 
 public class Demo{ 
 
-    public static void main (String[] args) throws NumberFormatException, IOException{
-    // int nombre = 0;
-    //     try {
-    //         nombre = System.in.read();
-    //     } catch (IOException e) {
-    //         System.out.println(e);
-    //     }
-    //     System.out.println((int) nombre);
+    public static void main (String[] args){
+   
+        A obj = new A();
+        B obj2 = new B();
+        obj.start();
+        obj2.start();
+        // obj.show(); 
+        // obj2.show(); 
 
-    // InputStreamReader in = new InputStreamReader(System.in);
-    //     try (BufferedReader bf = new BufferedReader(in)) {
-    //         int num = Integer.parseInt(bf.readLine());
-    //         System.out.println(num);
-    //     }
-
-    try (Scanner sc = new Scanner(System.in)) {
-        int num = sc.nextInt();
-        System.out.println(num);
-    }
     }
 
 }
