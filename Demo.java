@@ -1,4 +1,4 @@
-class A extends Thread{
+class A implements Runnable{
     public void show(){
         for (int i = 0; i < 100; i++) {
             System.out.println("hi" );
@@ -14,7 +14,7 @@ class A extends Thread{
         show();
     }
 }
-class B extends Thread{
+class B implements Runnable{
     public void show(){
         for (int i = 0; i < 100; i++) {
             System.out.println("hello" );
@@ -35,22 +35,25 @@ public class Demo{
 
     public static void main (String[] args){
    
-        A obj = new A();
+        Runnable obj = new A();
         B obj2 = new B();
+
+        Thread tr1 = new Thread(obj);
+        Thread tr2 = new Thread(obj2);
 
         // obj.setPriority(Thread.MAX_PRIORITY);
         // obj2.setPriority(Thread.MIN_PRIORITY);
 
-        System.out.println(obj.getPriority());
-        System.out.println(obj2.getPriority());
+        // System.out.println(obj.getPriority());
+        // System.out.println(obj2.getPriority());
         
-        obj.start();
+        tr1.start();
         try {
             Thread.sleep(2);
         } catch (InterruptedException e) {
             // e.printStackTrace();
         }
-        obj2.start();
+        tr2.start();
 
     }
 
