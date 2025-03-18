@@ -46,13 +46,11 @@ public class Demo{
         
         obj.start();
         try {
-            Thread.sleep(3);
+            Thread.sleep(2);
         } catch (InterruptedException e) {
             // e.printStackTrace();
         }
         obj2.start();
-        // obj.show(); 
-        // obj2.show(); 
 
     }
 
