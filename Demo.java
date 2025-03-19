@@ -50,7 +50,6 @@ public class Demo{
         Iterator<Integer> value= mySet.iterator();
         while(value.hasNext()){
             System.out.println(value.next());
-        
         }
         
 
