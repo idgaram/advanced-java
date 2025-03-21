@@ -31,9 +31,7 @@ public class Demo {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Comparator<Student> comp = (Student arg0, Student arg1) -> {
-            return arg0.age > arg1.age ? 1 : -1;
-        };
+        Comparator<Student> comp = (arg0, arg1) -> arg0.age > arg1.age ? 1 : -1;
 
         List<Student> studs = new ArrayList<>();
 
