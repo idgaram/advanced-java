@@ -22,12 +22,7 @@ class Student implements Comparable<Student> {
     }
 
     public int compareTo(Student arg0) {
-        if (this.age > arg0.age) {
-            return 1;
-        } else {
-            return -1;
-        }
-        // return 0;
+        return this.age > arg0.age ? 1 : -1;
     }
 
 }
@@ -36,17 +31,8 @@ public class Demo {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Comparator<Student> comp = new Comparator<Student>() {
-
-            @Override
-            public int compare(Student arg0, Student arg1) {
-                if (arg0.age > arg1.age) {
-                    return 1;
-                } else {
-                    return -1;
-                }
-            }
-
+        Comparator<Student> comp = (Student arg0, Student arg1) -> {
+            return arg0.age > arg1.age ? 1 : -1;
         };
 
         List<Student> studs = new ArrayList<>();
@@ -60,13 +46,16 @@ public class Demo {
 
         // Student student1 = new Student(20, "Benoit");
 
-        // Collections.sort(studs, comp);
+        Collections.sort(studs, comp);
+
+        for (Object elem : studs) {
+            System.out.println(elem);
+        }
+
         Collections.sort(studs);
 
         for (Object elem : studs) {
             System.out.println(elem);
         }
-        // System.out.println((studs));
-
     }
 }
