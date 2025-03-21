@@ -35,34 +35,57 @@ public class Demo {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Comparator<Integer> comp = new Comparator<Integer>() {
-            public int compare(Integer i, Integer j) {
-                if (i % 10 > j % 10)
+        Comparator<String> stringComp = new Comparator<String>() {
+            @Override
+            public int compare(String t, String t1) {
+                if (t.length() < t1.length()) {
                     return 1;
-                else {
+                } else {
                     return -1;
                 }
-            };
+            }
+
         };
 
-        List<Integer> myList1 = new ArrayList<>();
-        List<Integer> myList2 = new ArrayList<>();
+        List<String> stringList = new ArrayList<String>();
 
-        myList1.add(121);
-        myList1.add(985);
-        myList1.add(16);
+        stringList.add("lorys");
+        stringList.add("adel");
+        stringList.add("carmene");
+        stringList.add("sophie");
+
+        System.out.println(stringList);
+        Collections.sort(stringList, stringComp);
+        System.out.println(stringList);
+
+        // Comparator<Integer> comp = new Comparator<Integer>() {
+        // public int compare(Integer i, Integer j) {
+        // if (i % 10 > j % 10)
+        // return 1;
+        // else {
+        // return -1;
+        // }
+        // };
+        // };
+
+        // List<Integer> myList1 = new ArrayList<>();
+        // List<Integer> myList2 = new ArrayList<>();
+
+        // myList1.add(121);
+        // myList1.add(985);
+        // myList1.add(16);
 
         // System.out.println(A.lister(5984));
         // System.out.println(A.lister(myList1.get(0)));
         // System.out.println(A.stringLister(myList1.get(0)));
 
-        Collections.sort(myList1);
-        System.out.println(myList1);
-        Collections.sort(myList1, comp);
-        System.out.println(myList1);
+        // Collections.sort(myList1);
+        // System.out.println(myList1);
+        // Collections.sort(myList1, comp);
+        // System.out.println(myList1);
 
-        myList2.add(412);
-        myList2.add(47856);
-        myList2.add(2254);
+        // myList2.add(412);
+        // myList2.add(47856);
+        // myList2.add(2254);
     }
 }
