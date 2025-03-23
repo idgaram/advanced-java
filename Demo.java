@@ -1,59 +1,50 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.List;
-
-class Student implements Comparable<Student> {
-    int age;
-    String name;
-
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Student{");
-        sb.append("age=").append(age);
-        sb.append(", name=").append(name);
-        sb.append('}');
-        return sb.toString();
-    }
-
-    public Student(int age, String name) {
-        this.age = age;
-        this.name = name;
-    }
-
-    public int compareTo(Student arg0) {
-        return this.age > arg0.age ? 1 : -1;
-    }
-
-}
 
 public class Demo {
 
     public static void main(String[] args) throws InterruptedException {
+        List<Integer> nums = Arrays.asList(4, 5, 6, 8);
 
-        Comparator<Student> comp = (arg0, arg1) -> arg0.age > arg1.age ? 1 : -1;
+        int sum = 0;
 
-        List<Student> studs = new ArrayList<>();
+        int result = nums.stream()
+                .filter(n -> n % 2 == 0)
+                .map(n -> n += n)
+                .reduce(0, (c, e) -> c + e);
 
-        studs.add(new Student(20, "Benoit"));
-        studs.add(new Student(27, "Carmen"));
-        studs.add(new Student(14, "Nathan"));
-        studs.add(new Student(12, "Nathan"));
-        studs.add(new Student(64, "Nathan"));
-        studs.add(new Student(4, "Nathan"));
+        // Stream<Integer> s1 = nums.stream();
+        // Stream<Integer> s2 = s1.filter(n -> n % 2 == 0);
+        // Stream<Integer> s3 = s2.map(n -> n += n);
+        // int result = s3.reduce(0, (c, e) -> c + e);
 
-        // Student student1 = new Student(20, "Benoit");
+        System.out.println(result);
+        // s3.forEach(n -> System.out.println(n));
 
-        Collections.sort(studs, comp);
+        // s1.filter(n -> n%2==0)
 
-        for (Object elem : studs) {
-            System.out.println(elem);
-        }
+        // Stream
 
-        Collections.sort(studs);
+        // Consumer<Integer> cons = n ->{ if (n%2 == 0) {
+        // n += n;
+        // sum+=n;
+        // }};
 
-        for (Object elem : studs) {
-            System.out.println(elem);
-        }
+        // nums.forEach(cons);
+
+        // for (int i = 0; i < nums.size(); i++) {
+        // System.out.println(nums.get(i));
+        // }
+
+        // for (int n : nums) {
+
+        // if (n % 2 == 0) {
+        // n += n;
+        // sum += n;
+        // }
+        // }
+
+        // System.out.println(sum);
+
     }
 }
