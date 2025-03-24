@@ -1,7 +1,6 @@
-
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Demo {
 
@@ -9,16 +8,24 @@ public class Demo {
 
         List<String> names = Arrays.asList("benoit", "catherine", "clara", "romane", "john");
 
-        // String name = names.stream()
-        // .filter(n -> n.contains("x"))
-        // .findFirst().orElse("no name with this sequence was found");
+        List<String> capitalNames = names.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
+        // List<String> capitalNames = names.stream()
+        // .map(n -> n.substring(0, 1).toUpperCase() + n.substring(1))
+        // .collect(Collectors.toList());
 
-        // System.out.println(name);
+        // capitalNames.add("andré");
 
-        Optional<String> name = names.stream()
-                .filter(n -> n.contains("x"))
-                .findFirst();
+        // List<String> finalCapitalNames = names.stream()
+        // .map(n -> n.substring(0, 1).toUpperCase() + n.substring(1))
+        // .toList();
 
-        System.out.println(name.orElse("no name with this sequence was found"));
+        // finalCapitalNames.add("andré");
+
+        capitalNames.forEach(System.out::println);
+        System.out.println(capitalNames);
+        // System.out.println(finalCapitalNames);
+
     };
 }
