@@ -1,6 +1,45 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+
+class Student {
+    private int age;
+    private String name;
+
+    public Student() {
+    }
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Student{");
+        sb.append("age=").append(age);
+        sb.append(", name=").append(name);
+        sb.append('}');
+        return sb.toString();
+    }
+
+}
 
 public class Demo {
 
@@ -8,24 +47,16 @@ public class Demo {
 
         List<String> names = Arrays.asList("benoit", "catherine", "clara", "romane", "john");
 
-        List<String> capitalNames = names.stream()
-                .map(String::toUpperCase)
-                .collect(Collectors.toList());
-        // List<String> capitalNames = names.stream()
-        // .map(n -> n.substring(0, 1).toUpperCase() + n.substring(1))
-        // .collect(Collectors.toList());
+        List<Student> students = new ArrayList<>();
 
-        // capitalNames.add("andré");
+        // for (String name : names) {
+        // students.add(new Student(name));
+        // }
 
-        // List<String> finalCapitalNames = names.stream()
-        // .map(n -> n.substring(0, 1).toUpperCase() + n.substring(1))
-        // .toList();
+        students = names.stream()
+                .map(Student::new)
+                .toList();
 
-        // finalCapitalNames.add("andré");
-
-        capitalNames.forEach(System.out::println);
-        System.out.println(capitalNames);
-        // System.out.println(finalCapitalNames);
-
+        System.out.println(students);
     };
 }
